@@ -6,7 +6,7 @@ Exploit = {"name": "", "address": null, "hasRequirement": false, "requirement": 
 /*
   Scan Vulns of a metaLib
 */
-scanvulns = function(metaLib)
+module.exports = function(metaLib)
   exploits = []
   scanResult = metax.scan(metaLib)
   for area in scanResult
@@ -22,9 +22,10 @@ scanvulns = function(metaLib)
       exploit.address = area
       exploit.hasRequirement = segment.indexOf("*") != null
       if (exploit.hasRequirement) then
-        exploit.requirement = segment[segment.indexOf("*")+2:segment.indexOf(".",segment.indexOf("*"))]
+        requirementStart = segment.indexOf("*")
+        requirementEnd = segment.indexOf(".",requirementStart)
+        exploit.requirement = segment[requirementStart+2:requirementEnd]
       end if
-
 
       exploits.push(exploit)
     end for
