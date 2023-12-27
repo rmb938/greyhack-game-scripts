@@ -1,7 +1,7 @@
 #import minstd_rand0_range from libs/minstd_rand0_range.gs;
 
 print_usage = function()
-  exit("<b>Usage: minstd_rand0 [seed] [count]</b>")
+  exit("<b>Usage: minstd_rand [seed] [count]</b>")
 end function
 
 seed = rnd()
