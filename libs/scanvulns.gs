@@ -1,5 +1,11 @@
 metax = include_lib("/lib/metaxploit.so")
-if not metax then exit("Error: Missing metaxploit library")
+if not metax then 
+  metax = include_lib(current_path + "/metaxploit.so")
+end if
+
+if not metax then 
+  exit("Error: Missing metaxploit library")
+end if
 
 Exploit = {"name": "", "address": null, "hasRequirement": false, "requirement": null}
 
@@ -32,11 +38,5 @@ module.exports = function(metaLib)
 
   end for
 
-  print("Available vulnerabilities:")
-  for exploit in exploits
-    print("====================")
-    print(" Name: "+exploit.name)
-    print(" Address: "+exploit.address)
-    print(" Requirement: "+exploit.requirement)
-  end for
+  return exploits
 end function

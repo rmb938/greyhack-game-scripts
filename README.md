@@ -5,6 +5,8 @@ Personal Scripts and Libraries for Grey Hack https://greyhackgame.com/
 
 Scans a Router for vulnerabilities
 
+### Type: Remote - Internet/Lan
+
 ### Usage: `scanroutervulns [ip address]`
 
 ### Example Output:
@@ -46,3 +48,15 @@ Available vulnerabilities:
  Address: 0x35D0D852
  Requirement: Checking existing connection in the local network
 ```
+
+## `exploitroutershell`
+
+Opens a shell environment on the router
+
+### Type: Remote - Internet/Lan
+
+## `exploitroutercomputerlisthome`
+
+List the home directories on a lan device from a router
+
+### Type: Remote - Lan
