@@ -1,3 +1,5 @@
+#import Exploit from exploit_class.gs;
+
 metax = include_lib("/lib/metaxploit.so")
 if not metax then 
   metax = include_lib(current_path + "/metaxploit.so")
@@ -6,8 +8,6 @@ end if
 if not metax then 
   exit("Error: Missing metaxploit library")
 end if
-
-Exploit = {"name": "", "address": null, "hasRequirement": false, "requirement": null}
 
 /*
   Scan Vulns of a metaLib
@@ -25,12 +25,28 @@ module.exports = function(metaLib)
 
       exploit = new Exploit
       exploit.name = segment[labelStart + 3: labelEnd]
+      exploit.comment = ""
       exploit.address = area
       exploit.hasRequirement = segment.indexOf("*") != null
       if (exploit.hasRequirement) then
+        exploit.requirements = []
         requirementStart = segment.indexOf("*")
         requirementEnd = segment.indexOf(".",requirementStart)
-        exploit.requirement = segment[requirementStart+2:requirementEnd]
+        exploit.requirements.push(segment[requirementStart+2:requirementEnd])
+
+        // may have more than one requirement so scan for more after the end of the first one
+        while true
+          requirementStart = segment.indexOf("*", requirementStart)
+
+          // no more requirements so break out
+          if (requirementStart == null) then
+            break
+          end if
+
+          requirementEnd = segment.indexOf(".",requirementStart)
+
+          exploit.requirements.push(segment[requirementStart+2:requirementEnd])
+        end while
       end if
 
       exploits.push(exploit)

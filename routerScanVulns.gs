@@ -1,4 +1,4 @@
-#import ScanVulns from libs/scanvulns.gs;
+#import ScanVulns from libs/scan_vulns.gs;
 
 metax = include_lib("/lib/metaxploit.so")
 if not metax then 
@@ -9,7 +9,7 @@ if not metax then
   exit("Error: Missing metaxploit library")
 end if
 
-if params.len != 1 or params[0] == "-h" or params[0] == "--help" then exit("<b>Usage: scanroutervulns [ip address]</b>")
+if params.len != 1 or params[0] == "-h" or params[0] == "--help" then exit("<b>Usage: routerScanVulns [ip address]</b>")
 
 routerIP = params[0]
 routerNetSession = metax.net_use(routerIP, 0)
@@ -25,5 +25,8 @@ for exploit in exploits
   print("====================")
   print(" Name: "+exploit.name)
   print(" Address: "+exploit.address)
-  print(" Requirement: "+exploit.requirement)
+  print(" Requirements: ")
+  for item in exploit.requirements
+    print("   * "+item)
+  end for
 end for

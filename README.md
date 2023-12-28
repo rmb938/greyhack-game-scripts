@@ -1,13 +1,11 @@
 # greyhack-game-scripts
 Personal Scripts and Libraries for Grey Hack https://greyhackgame.com/
 
-## `scanroutervulns`
+## `routerScanVulns [ip address]`
 
 Scans a Router for vulnerabilities
 
 ### Type: Remote - Internet/Lan
-
-### Usage: `scanroutervulns [ip address]`
 
 ### Example Output:
 
@@ -49,14 +47,111 @@ Available vulnerabilities:
  Requirement: Checking existing connection in the local network
 ```
 
-## `exploitroutershell`
+## `exploitRouterShell [ip address]`
 
 Opens a shell environment on the router
 
+If a vuln is known it will prompt for which one to use. 
+
+If a vuln is not known it will scan for for vulns, 
+use the first one found and output data to be added to the script
+
+When vuln is not know script will only try vulns that have no requirements.
+
 ### Type: Remote - Internet/Lan
 
-## `exploitroutercomputerlisthome`
+### Example Output:
 
-List the home directories on a lan device from a router
+```
+TODO:
+```
 
-### Type: Remote - Lan
+## `exploitRouterFile [ip address]`
+
+Reads a file or lists out the directory of a LAN computer. If file is binary it will state as such
+
+If a vuln is known it will prompt for which one to use. 
+
+If a vuln is not known it will scan for for vulns, 
+use the first one found and output data to be added to the script.
+
+When vuln is not known script will prompt to try vulns that have requirements, 
+defaulting to only trying vulns with no requirements.
+
+### Type: Remote - Internet/Lan
+
+### Example Output:
+
+```
+TODO:
+```
+
+## `exploitSSHShell [ip address]`
+
+Opens a shell environment on the SSH server
+
+If a vuln is known it will prompt for which one to use. 
+
+If a vuln is not known it will scan for for vulns, 
+use the first one found and output data to be added to the script
+
+When vuln is not known script will prompt to try vulns that have requirements, 
+defaulting to only trying vulns with no requirements.
+
+### Type: Remote - Internet/Lan
+
+### Example Output:
+
+```
+TODO:
+```
+
+## `exploitSSHFile [ip address]`
+
+Reads a file or lists out the directory of the SSH Server. If file is binary it will state as such
+
+If a vuln is known it will prompt for which one to use. 
+
+If a vuln is not known it will scan for for vulns, 
+use the first one found and output data to be added to the script.
+
+When vuln is not known script will prompt to try vulns that have requirements, 
+defaulting to only trying vulns with no requirements.
+
+### Type: Remote - Internet/Lan
+
+### Example Output:
+
+```
+TODO:
+```
+
+## `startService [library name]`
+
+Starts the service managed by the specified library.
+
+Note: Libraries **must** be in `/lib`
+
+### Type: Local
+
+### Example Output:
+
+```
+# startService librshell
+Service librshell started.
+```
+
+## `stopService [library name]`
+
+Stops the service managed by the specified library.
+
+Note: Libraries **must** be in `/lib`
+
+### Type: Local
+
+### Example Output:
+
+```
+# stopService librshell
+Service librshell stopped.
+```
