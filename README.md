@@ -155,3 +155,43 @@ Note: Libraries **must** be in `/lib`
 # stopService librshell
 Service librshell stopped.
 ```
+
+## `exploitHTTPShell [ip address]`
+
+Opens a shell environment on the HTTP server
+
+If a vuln is known it will prompt for which one to use. 
+
+If a vuln is not known it will scan for for vulns, 
+use the first one found and output data to be added to the script
+
+When vuln is not known script will prompt to try vulns that have requirements, 
+defaulting to only trying vulns with no requirements.
+
+### Type: Remote - Internet/Lan
+
+### Example Output:
+
+```
+TODO:
+```
+
+## `exploitFTPShell [ip address]`
+
+Opens a shell environment on the FTP server
+
+If a vuln is known it will prompt for which one to use. 
+
+If a vuln is not known it will scan for for vulns, 
+use the first one found and output data to be added to the script
+
+When vuln is not known script will prompt to try vulns that have requirements, 
+defaulting to only trying vulns with no requirements.
+
+### Type: Remote - Internet/Lan
+
+### Example Output:
+
+```
+TODO:
+```
